@@ -47,6 +47,10 @@ def init_db():
     conn.close()
 
 
+# 🔑 CLAVE PARA RENDER / FLASK 3
+init_db()
+
+
 @app.route('/')
 def index():
     conn = get_db_connection()
@@ -131,8 +135,3 @@ def exportar():
 
     df.to_csv('reporte_etapa8.csv', index=False)
     return send_file('reporte_etapa8.csv', as_attachment=True)
-
-
-if __name__ == '__main__':
-    init_db()
-    app.run(host='0.0.0.0', port=5000)
